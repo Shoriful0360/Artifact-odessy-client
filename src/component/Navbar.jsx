@@ -1,9 +1,11 @@
 import { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import UseAuth from "../hooks/UseAuth";
 
 
 const Navbar = () => {
-    const user=useState('')
+  const{user,logOut}=UseAuth()
+
     return (
         <div className='navbar bg-base-100 shadow-sm container px-4 mx-auto'>
       <div className='flex-1'>
@@ -23,9 +25,6 @@ const Navbar = () => {
           <li>
             <Link to='/jobs'>Add Artifacts</Link>
           </li>
-          <li>
-              <Link to='/login'>Login</Link>
-            </li>
 
           {!user && (
             <li>
@@ -45,7 +44,7 @@ const Navbar = () => {
                 <img
                   referrerPolicy='no-referrer'
                   alt='User Profile Photo'
-                //   src={user?.photoURL}
+                  src={user?.photoURL}
                 />
               </div>
             </div>
@@ -65,7 +64,7 @@ const Navbar = () => {
              
               <li className='mt-2'>
                 <button
-                  onClick={'logOut'}
+                  onClick={logOut}
                   className='bg-gray-200 block text-center'
                 >
                   Logout

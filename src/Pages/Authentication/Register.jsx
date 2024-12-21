@@ -5,10 +5,13 @@ import { GoEye } from "react-icons/go";
 import { IoEyeOffOutline } from "react-icons/io5";
 import { useState } from "react";
 import toast from "react-hot-toast";
+import UseAuth from "../../hooks/UseAuth";
 
 const Register = () => {
     const [visible,setVisible]=useState(false)
-    const handleFormSubmit=(e)=>{
+    const {createUser,setUser}=UseAuth()
+
+    const handleFormSubmit=async(e)=>{
         e.preventDefault()
         const form=e.target;
         const name=form.name.value;
@@ -30,7 +33,14 @@ const Register = () => {
         toast.error('check terms and conditon')
         return;
       }  
-       
+      try{
+        const result=await createUser(email,password)
+      setUser(result.user)
+      }catch (err){
+        console.log(err)
+      }
+    
+    
     
       }
     return (
