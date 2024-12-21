@@ -1,6 +1,7 @@
 import Lottie from 'lottie-react';
 import login_animate from '../../assets/Lottile_animation/login/Animation - 1733908240352.json'
 import { Link } from 'react-router-dom';
+import { FcGoogle } from 'react-icons/fc';
 
 const Login = () => {
     const handleFormSubmit=(e)=>{
@@ -14,7 +15,6 @@ const Login = () => {
         <div className="mt-10">
         <h1 className="text-center text-4xl font-bold">LogIn Now</h1>
         <div className="hero ">
-    <h1 className="text-red-800">heool</h1>
 <div className="hero-content flex-col lg:flex-row-reverse">
 
 <div className=" lg:text-left ">
@@ -44,8 +44,13 @@ const Login = () => {
       <button className="btn btn-primary">Login</button>
     </div>
   </form>
+
   <div className='my-2'>
     <h1>Don't have an accoutn? <Link to={'/register'}><span className='text-blue-400 text-xl font-semibold'>Register</span></Link></h1>
+  </div>
+  <div className="divider">Log in with Google</div>
+  <div className='flex justify-center'>
+    <FcGoogle className='text-5xl hover:cursor-pointer'/>
   </div>
 </div>
 </div>
