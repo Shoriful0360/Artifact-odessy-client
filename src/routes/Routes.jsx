@@ -3,6 +3,7 @@ import Main from "../Layout/Main";
 import Login from "../Pages/Authentication/Login";
 import Register from "../Pages/Authentication/Register";
 import Home from "../Pages/Home";
+import AddArtifacts from "../Pages/AddArtifacts";
 
 
 
@@ -22,6 +23,9 @@ export const router=createBrowserRouter([
             {
                 path:'/register',
                 element:<Register></Register>
+            },{
+                path:'/addArtifact',
+                element:<AddArtifacts></AddArtifacts>
             }
         ]
     }

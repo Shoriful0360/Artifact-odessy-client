@@ -23,7 +23,7 @@ const Navbar = () => {
             <Link to='/jobs'>All Artifacts</Link>
           </li>
           <li>
-            <Link to='/jobs'>Add Artifacts</Link>
+            <Link to='/addArtifact'>Add Artifacts</Link>
           </li>
 
           {!user && (
