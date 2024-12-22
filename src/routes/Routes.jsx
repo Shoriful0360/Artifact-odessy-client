@@ -4,6 +4,7 @@ import Login from "../Pages/Authentication/Login";
 import Register from "../Pages/Authentication/Register";
 import Home from "../Pages/Home";
 import AddArtifacts from "../Pages/AddArtifacts";
+import AuthPrivate from "../Private/AuthPrivate";
 
 
 
@@ -25,7 +26,7 @@ export const router=createBrowserRouter([
                 element:<Register></Register>
             },{
                 path:'/addArtifact',
-                element:<AddArtifacts></AddArtifacts>
+                element:<AuthPrivate><AddArtifacts></AddArtifacts></AuthPrivate>
             }
         ]
     }

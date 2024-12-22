@@ -1,9 +1,15 @@
 
+import toast from "react-hot-toast";
+import UseAuth from "../hooks/UseAuth";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
+
+
 
 const AddArtifacts = () => {
-
-
-    const handleFormSubmit=(e)=>{
+    const navigate=useNavigate()
+const {user}=UseAuth()
+    const handleFormSubmit=async(e)=>{
               e.preventDefault()
         
         const form=e.target
@@ -16,9 +22,21 @@ const AddArtifacts = () => {
         const disBy=form.disBy.value;
         const location=form.location.value;
         const adderName=form.adderName.value;
-        const adderEmail=form.adderEmail.value;
-     const formData={name,img,ArtType,context,created,dis,disBy,location,adderName,adderEmail}
-     console.table(formData)
+    
+     const formData={name,img,count:0,ArtType,context,created,dis,disBy,location,adderName,adderEmail:user?.email}
+     console.log(formData)
+
+
+ 
+     try{
+ await axios.post('http://localhost:5000/artifacts',formData)
+
+    toast.success('added successfully')
+navigate('/')
+     }catch{
+toast.error('something is wrong')
+     }
+
     }
     return (
         <div className=' sm:w-10/12 mx-auto w-full '>
@@ -114,7 +132,10 @@ const AddArtifacts = () => {
                                 <label className="label">
                                     <span className="label-text">Artifact adder email</span>
                                 </label>
-                                <input type="email" name='adderEmail' placeholder="Enter Artifact adder email" className="input w-full input-bordered" required />
+                                <input type="email" name='adderEmail' 
+                                value={user?.email}
+                                disabled
+                                placeholder="Enter Artifact adder email" className="input w-full input-bordered" required />
 
 
                             </div>
