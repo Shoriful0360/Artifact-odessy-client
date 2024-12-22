@@ -1,6 +1,6 @@
 import Lottie from "lottie-react";
 import Register_animate from '../../assets/Lottile_animation/register/Animation - 1733897648525 (1).json'
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { GoEye } from "react-icons/go";
 import { IoEyeOffOutline } from "react-icons/io5";
 import { useState } from "react";
@@ -9,7 +9,8 @@ import UseAuth from "../../hooks/UseAuth";
 
 const Register = () => {
     const [visible,setVisible]=useState(false)
-    const {createUser,setUser}=UseAuth()
+    const navigate=useNavigate()
+    const {createUser,setUser,updateUserProfile}=UseAuth()
 
     const handleFormSubmit=async(e)=>{
         e.preventDefault()
@@ -35,7 +36,11 @@ const Register = () => {
       }  
       try{
         const result=await createUser(email,password)
-      setUser(result.user)
+       await updateUserProfile(name,email)
+      setUser({...result?.user, displayName:name,photoURL:photoUrl})
+      toast.success('Signup is successfuylly')
+      form.reset()
+      navigate('/')
       }catch (err){
         console.log(err)
       }
@@ -69,7 +74,7 @@ const Register = () => {
                     <label className="label">
                         <span className="label-text">Photo URL</span>
                     </label>
-                    <input type="text" name="photoUrl" placeholder="Enter your photo URL" className="input input-bordered" required />
+                    <input type="url" name="photoUrl" placeholder="Enter your photo URL" className="input input-bordered" required />
                 </div>
                 <div className="form-control">
                     <label className="label">

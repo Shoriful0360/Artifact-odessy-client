@@ -1,15 +1,44 @@
 import Lottie from 'lottie-react';
 import login_animate from '../../assets/Lottile_animation/login/Animation - 1733908240352.json'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
+import UseAuth from '../../hooks/UseAuth';
+import toast from 'react-hot-toast';
 
 const Login = () => {
-    const handleFormSubmit=(e)=>{
+  const {loginUser,setUser,googleLogin}=UseAuth()
+  const navigate=useNavigate()
+
+  // login form
+    const handleFormSubmit=async(e)=>{
         e.preventDefault()
         const form=e.target;
         const email=form.email.value;
         const password=form.password.value;
-      
+console.log(email,password)
+try{
+const {user}=await  loginUser(email,password)
+setUser(user)
+toast.success('login successfull')
+form.reset()
+navigate('/')
+}catch{
+
+toast.error('Invalid email or password')
+}  
+    }
+
+    // login with google
+    const handleGoogle=async()=>{
+try{
+ const {user}=await googleLogin()
+ setUser(user)
+ toast.success('login is successfully')
+ navigate('/')
+}
+catch{
+toast.error('something is wrong')
+}
     }
     return (
         <div className="mt-10">
@@ -50,7 +79,7 @@ const Login = () => {
   </div>
   <div className="divider">Log in with Google</div>
   <div className='flex justify-center'>
-    <FcGoogle className='text-5xl hover:cursor-pointer'/>
+    <FcGoogle onClick={handleGoogle} className='text-5xl hover:cursor-pointer'/>
   </div>
 </div>
 </div>
