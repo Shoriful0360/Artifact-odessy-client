@@ -11,7 +11,7 @@ const ArtifactCard = ({artifacts}) => {
           <p>collection</p>
           <h1 className="text-xl font-semibold">Discover The Collection</h1>
           </div>
-        <div className="grid lg:grid-cols-3 md:grid-cols-2 gap-3">
+        <div className="grid mt-5 lg:grid-cols-3 md:grid-cols-2 gap-7">
         {
             artifacts?.map((artifact=> <Card key={artifact._id} artifact={artifact}></Card>))
            } 

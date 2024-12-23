@@ -7,11 +7,12 @@ export const AuthContext=createContext('')
 
 const AuthProvider = ({children}) => {
     const provider=new GoogleAuthProvider()
-    const {loading,setLoading}=useState(true)
+    const [loading,setLoading]=useState(true)
     const [user,setUser]=useState('')
 
     // user create
     const createUser=(email,password)=>{
+        setLoading(true)
         return createUserWithEmailAndPassword(auth,email,password)
     }
 
@@ -23,12 +24,14 @@ const AuthProvider = ({children}) => {
     // login with email and passwore
  
 const loginUser=(email,password)=>{
+    setLoading(true)
     return signInWithEmailAndPassword(auth,email,password)
 }
 
 
 // login with google
 const googleLogin=()=>{
+    setLoading(true)
 return signInWithPopup(auth,provider)
 
 }
@@ -51,7 +54,7 @@ const updateUserProfile=(name,photoUrl)=>{
     },[])
 
     const info={
-        createUser,user,setUser,logOut,loginUser,googleLogin,updateUserProfile
+        createUser,user,setUser,logOut,loginUser,googleLogin,updateUserProfile,loading
     }
     return (
         <div>

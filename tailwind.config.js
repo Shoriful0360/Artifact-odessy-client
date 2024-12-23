@@ -8,6 +8,11 @@ export default {
     extend: {
       colors:{
         yellow:'#E2B13C'
+      },
+
+      backgroundImage: {
+        "deatailsImg": "url('https://st.ourhtmldemo.com/new/egypt/images/background/inner-banner-bg-1-1.jpg')",
+      
       }
     },
   },

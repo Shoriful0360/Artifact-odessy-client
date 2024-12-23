@@ -7,7 +7,7 @@ const Navbar = () => {
   const{user,logOut}=UseAuth()
 
     return (
-        <div className='navbar bg-base-100 shadow-sm container px-4 mx-auto'>
+        <div className='navbar bg-base-100 shadow-sm container  mx-auto'>
       <div className='flex-1'>
         <Link to='/' className='flex gap-2 items-center'>
           <img className='w-auto h-7' src={"logo"} alt='' />
@@ -20,7 +20,7 @@ const Navbar = () => {
             <Link to='/'>Home</Link>
           </li>
           <li>
-            <Link to='/jobs'>All Artifacts</Link>
+            <Link to='/allArts'>All Artifacts</Link>
           </li>
           <li>
             <Link to='/addArtifact'>Add Artifacts</Link>

@@ -8,7 +8,7 @@ const AuthPrivate = ({children}) => {
     const {user,loading,setLoading}=UseAuth()
 
     if(loading){
-        return <Spinner></Spinner>
+        return <p>loading..</p>
     }
 
     if(user){

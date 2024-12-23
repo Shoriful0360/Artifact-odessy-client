@@ -15,13 +15,13 @@ const image=[
 ]
 
     return (
-      <div className="px-6">
+      <div className="">
          <h1 className="text-center font-bold text-3xl my-5">About Our <span className="text-yellow">VENUS</span></h1>
-          <div className="grid lg:grid-cols-4 lg:gap-5 gap-3 md:grid-cols-2">
+          <div className="grid  lg:grid-cols-4 lg:gap-5 gap-3 md:grid-cols-2">
            
            {
             image?.map((img,idx)=><div key={idx}>
-        <div className="relative">
+        <div className="relative hover:scale-105 transition-all" >
     
                <img className="w-full opacity-70 rounded-md" src={img.img} alt="" />
             

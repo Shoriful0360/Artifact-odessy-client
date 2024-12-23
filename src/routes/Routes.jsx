@@ -5,6 +5,8 @@ import Register from "../Pages/Authentication/Register";
 import Home from "../Pages/Home";
 import AddArtifacts from "../Pages/AddArtifacts";
 import AuthPrivate from "../Private/AuthPrivate";
+import ArtDeatils from "../Pages/ArtDeatils";
+import AllArtifacts from "../Pages/AllArtifacts";
 
 
 
@@ -27,6 +29,15 @@ export const router=createBrowserRouter([
             },{
                 path:'/addArtifact',
                 element:<AuthPrivate><AddArtifacts></AddArtifacts></AuthPrivate>
+            },
+            {
+                path:'/details/:id',
+                element:<AuthPrivate><ArtDeatils></ArtDeatils></AuthPrivate>,
+                loader:({params})=>fetch(`http://localhost:5000/artifacts/${params.id}`)
+            },
+            {
+                path:'/allArts',
+                element:<AllArtifacts></AllArtifacts>
             }
         ]
     }
