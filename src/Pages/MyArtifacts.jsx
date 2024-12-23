@@ -5,6 +5,8 @@ import Spinner from "../component/Spinner";
 import { useEffect } from "react";
 import { CiEdit } from "react-icons/ci";
 import { MdAutoDelete } from "react-icons/md";
+import toast from "react-hot-toast";
+import Nodata from "../component/Nodata";
 
 
 const MyArtifacts = () => {
@@ -23,15 +25,23 @@ useEffect(()=>{
 },[user?.email])
 
 
-   const handleDelet=(id)=>{
-console.log(id)
+   const handleDelet=async(id)=>{
+try{
+const {data}=await axios.delete(`http://localhost:5000/artifacts/${id}`)
+refetch()
+toast.success('delete is successfully')
+
+}catch{
+toast.error('somethins is wrong')
+}
    }
 
     if(isLoading) return <Spinner></Spinner>
 
     return (
         <div>
-            <div className="overflow-x-auto">
+
+            {artifact?.length? <div className="overflow-x-auto">
   <table className="table">
     {/* head */}
     <thead>
@@ -85,6 +95,10 @@ console.log(id)
    
   </table>
 </div>
+        :
+        <Nodata></Nodata>    
+        }
+           
         </div>
     );
 };

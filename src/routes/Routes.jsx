@@ -8,6 +8,7 @@ import AuthPrivate from "../Private/AuthPrivate";
 import ArtDeatils from "../Pages/ArtDeatils";
 import AllArtifacts from "../Pages/AllArtifacts";
 import MyArtifacts from "../Pages/MyArtifacts";
+import Error from "../Pages/Error";
 
 
 
@@ -15,6 +16,7 @@ export const router=createBrowserRouter([
     {
         path:'/',
         element:<Main></Main>,
+        errorElement:<Error></Error>,
         children:[
             {
                 path:'/',
@@ -45,5 +47,6 @@ export const router=createBrowserRouter([
                 element:<MyArtifacts></MyArtifacts>
             }
         ]
-    }
+    },
+   
 ])
