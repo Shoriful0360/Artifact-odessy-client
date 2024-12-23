@@ -5,6 +5,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import Card from "../component/Card";
 import ArtifactCard from "../component/ArtifactCard";
+import Spinner from "../component/Spinner";
 
 
 const Home = () => {
@@ -28,6 +29,7 @@ setArtifacts(data)
            <Banner></Banner> 
            <OurVenus></OurVenus>
            <ArtifactCard artifacts={artifacts}></ArtifactCard>
+   
 
  
         </div>

@@ -7,6 +7,7 @@ import AddArtifacts from "../Pages/AddArtifacts";
 import AuthPrivate from "../Private/AuthPrivate";
 import ArtDeatils from "../Pages/ArtDeatils";
 import AllArtifacts from "../Pages/AllArtifacts";
+import MyArtifacts from "../Pages/MyArtifacts";
 
 
 
@@ -38,6 +39,10 @@ export const router=createBrowserRouter([
             {
                 path:'/allArts',
                 element:<AllArtifacts></AllArtifacts>
+            },
+            {
+                path:'/myArtifacts',
+                element:<MyArtifacts></MyArtifacts>
             }
         ]
     }

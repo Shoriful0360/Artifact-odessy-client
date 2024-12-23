@@ -44,7 +44,7 @@ const Navbar = () => {
                 <img
                   referrerPolicy='no-referrer'
                   alt='User Profile Photo'
-                  src={user?.photoURL}
+                  src={`${user?.photoURL}`}
                 />
               </div>
             </div>
@@ -53,7 +53,7 @@ const Navbar = () => {
               className='menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52'
             >
               <li>
-                <Link to='' className='justify-between'>
+                <Link to='/myArtifacts' className='justify-between'>
                 My Artifacts
                 </Link>
               </li>
