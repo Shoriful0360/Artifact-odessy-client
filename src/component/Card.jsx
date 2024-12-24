@@ -14,7 +14,7 @@ const Card = ({artifact}) => {
         
        <Link to={`/details/${_id}`}>
        <button
-            className="text-white bg-blue-600 hover:bg-blue-700 px-4 py-1 text-sm rounded"
+            className=" custom-btn btn-1 "
             
           >
             View Details

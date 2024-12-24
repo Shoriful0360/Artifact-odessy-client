@@ -9,6 +9,7 @@ import ArtDeatils from "../Pages/ArtDeatils";
 import AllArtifacts from "../Pages/AllArtifacts";
 import MyArtifacts from "../Pages/MyArtifacts";
 import Error from "../Pages/Error";
+import UpdateArt from "../Pages/UpdateArt";
 
 
 
@@ -45,6 +46,11 @@ export const router=createBrowserRouter([
             {
                 path:'/myArtifacts',
                 element:<MyArtifacts></MyArtifacts>
+            },
+            {
+                path:'/update/:id',
+                element: <UpdateArt></UpdateArt>,
+                loader:({params})=>fetch(`http://localhost:5000/artifacts/${params.id}`)
             }
         ]
     },

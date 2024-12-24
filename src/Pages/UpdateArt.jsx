@@ -1,44 +1,49 @@
-
-import toast from "react-hot-toast";
-import UseAuth from "../hooks/UseAuth";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
+import toast from "react-hot-toast";
+import { useLoaderData, useNavigate } from "react-router-dom";
+import UseAuth from "../hooks/UseAuth";
 
 
 
-const AddArtifacts = () => {
-    const navigate=useNavigate()
+
+const UpdateArt = () => {
 const {user}=UseAuth()
+ const data=useLoaderData()
+
+ const {name,img,ArtType,context,created,dis,disBy,location,adderName,adderEmail,count,_id}=data
+
+const navigate=useNavigate()
+
+
     const handleFormSubmit=async(e)=>{
-              e.preventDefault()
-        
-        const form=e.target
-        const name=form.name.value;
-        const img=form.img.value;
-        const ArtType=form.ArtType.value;
-        const context=form.context.value;
-        const created=form.created.value;
-        const dis=form.dis.value;
-        const disBy=form.disBy.value;
-        const location=form.location.value;
-        const adderName=form.adderName.value;
-    
-     const formData={name,img,count:0,ArtType,context,created,dis,disBy,location,adderName,adderEmail:user?.email}
-     console.log(formData)
+        e.preventDefault()
+  
+  const form=e.target
+  const name=form.name.value;
+  const img=form.img.value;
+  const ArtType=form.ArtType.value;
+  const context=form.context.value;
+  const created=form.created.value;
+  const dis=form.dis.value;
+  const disBy=form.disBy.value;
+  const location=form.location.value;
 
 
- 
-     try{
- await axios.post('http://localhost:5000/artifacts',formData)
+const formData={name,img,ArtType,context,created,dis,disBy,location,adderName,adderEmail,count}
 
-    toast.success('added successfully')
+
+
+try{
+await axios.put(`http://localhost:5000/artifacts/${_id}`,formData)
+
+toast.success('update  successfully')
 navigate('/')
-form.reset()
-     }catch{
+}catch{
 toast.error('something is wrong')
-     }
+}
 
-    }
+}
+
     return (
         <div className=' sm:w-10/12 mx-auto w-full '>
         <div className="">
@@ -51,13 +56,13 @@ toast.error('something is wrong')
                                 <label className="label">
                                     <span className="label-text">Artifact Name</span>
                                 </label>
-                                <input type="text" name='name' placeholder="Enter your Artifac name" className="input input-bordered w-full " required />
+                                <input type="text" name='name' defaultValue={name} className="input input-bordered w-full " required />
                             </div>
                             <div className="sm:w-1/2">
                                 <label className="label">
                                     <span className="label-text">Artifact Image</span>
                                 </label>
-                                <input type="url" name='img' placeholder="Enter your Artifac img url" className="input w-full input-bordered" required />
+                                <input type="url" name='img' defaultValue={img} className="input w-full input-bordered" required />
 
                             </div>
                         </div>
@@ -67,7 +72,7 @@ toast.error('something is wrong')
                                     <span className="label-text">Artifact Type</span>
                                 </label>
                              
-                                <select name="ArtType" className="select  input-bordered  w-full ">
+                                <select name="ArtType" defaultValue={ArtType} className="select   input-bordered  w-full ">
                                     <option disabled selected>What is the Artifac type</option>
                                     <option>tools</option>
                                     <option>Documents</option>
@@ -81,8 +86,9 @@ toast.error('something is wrong')
                                     <span className="label-text">Historical Context </span>
                                 </label>
                                 <textarea
+                                defaultValue={context}
                                     name="context"
-                                    placeholder="Historical Context"
+                               
                                     className="textarea textarea-bordered textarea-xs w-full "></textarea>
                                
 
@@ -93,13 +99,13 @@ toast.error('something is wrong')
                                 <label className="label">
                                     <span className="label-text">Created At</span>
                                 </label>
-                                <input type="text" name='created' placeholder="Enter Created At " className="input w-full input-bordered" required />
+                                <input type="text" name='created' defaultValue={created} className="input w-full input-bordered" required />
                             </div>
                             <div className="sm:w-1/2">
                                 <label className="label">
                                     <span className="label-text">Discovered </span>
                                 </label>
-                                <input type="text" name='dis' placeholder="Enter Discovered  year" className="input w-full input-bordered" required />
+                                <input type="text" name='dis'defaultValue={dis} className="input w-full input-bordered" required />
 
                             </div>
                         </div>
@@ -108,7 +114,7 @@ toast.error('something is wrong')
                                 <label className="label">
                                     <span className="label-text">Discovered By</span>
                                 </label>
-                                <input type="text" name='disBy' placeholder="Enter Discovered By " className="input w-full input-bordered" required />
+                                <input type="text" name='disBy' defaultValue={disBy} className="input w-full input-bordered" required />
 
 
                             </div>
@@ -116,34 +122,13 @@ toast.error('something is wrong')
                                 <label className="label">
                                     <span className="label-text">Present Location</span>
                                 </label>
-                                <input type="text" name='location' placeholder="Enter Present Location" className="input w-full input-bordered" required />
+                                <input type="text" name='location' defaultValue={location} className="input w-full input-bordered" required />
 
                             </div>
                         </div>
-                        <div className='md:flex gap-4'>
-                            <div className="sm:w-1/2">
-                                <label className="label">
-                                    <span className="label-text">Artifact adder name</span>
-                                </label>
-                                <input type="text" name='adderName' placeholder="Enter Artifact adder name" className="input w-full input-bordered" required />
-
-
-                            </div>
-                            <div className="sm:w-1/2">
-                                <label className="label">
-                                    <span className="label-text">Artifact adder email</span>
-                                </label>
-                                <input type="email" name='adderEmail' 
-                                value={user?.email}
-                                disabled
-                                placeholder="Enter Artifact adder email" className="input w-full input-bordered" required />
-
-
-                            </div>
-                            
-                        </div>
+                      
                         <div className="form-control items-center mt-6">
-                            <button  className="custom-btn btn-2 w-full">Add Artifac</button>
+                            <button  className="custom-btn btn-3">update </button>
                         </div>
                     </form>
                     <div className='flex justify-center'>
@@ -156,4 +141,4 @@ toast.error('something is wrong')
     );
 };
 
-export default AddArtifacts;
+export default UpdateArt;
