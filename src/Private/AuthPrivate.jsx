@@ -1,14 +1,15 @@
 
 import { Navigate } from "react-router-dom";
-import Spinner from "../component/Spinner";
+
 import UseAuth from "../hooks/UseAuth";
+import Spinner from "../component/Spinner";
 
 
 const AuthPrivate = ({children}) => {
     const {user,loading,setLoading}=UseAuth()
 
     if(loading){
-        return <p>loading..</p>
+        return <Spinner></Spinner>
     }
 
     if(user){

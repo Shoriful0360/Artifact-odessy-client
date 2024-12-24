@@ -37,7 +37,7 @@ export const router=createBrowserRouter([
             {
                 path:'/details/:id',
                 element:<AuthPrivate><ArtDeatils></ArtDeatils></AuthPrivate>,
-                loader:({params})=>fetch(`http://localhost:5000/artifacts/${params.id}`)
+                // loader:({params})=>fetch(`http://localhost:5000/artifacts/${params.id}`)
             },
             {
                 path:'/allArts',

@@ -4,10 +4,12 @@ import { Link, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import UseAuth from '../../hooks/UseAuth';
 import toast from 'react-hot-toast';
+import { useRef } from 'react';
 
 const Login = () => {
-  const {loginUser,setUser,googleLogin}=UseAuth()
+  const {loginUser,setUser,googleLogin,forgetPassword}=UseAuth()
   const navigate=useNavigate()
+  const emailRef=useRef()
 
   // login form
     const handleFormSubmit=async(e)=>{
@@ -40,6 +42,15 @@ catch{
 toast.error('something is wrong')
 }
     }
+
+    // forgot password
+    const handleforgotPass=()=>{
+const email=emailRef.current.value
+forgetPassword(email)
+.then(()=>{
+  toast.success('Pleace check email and reset password')
+})
+    }
     return (
         <div className="mt-10">
         <h1 className="text-center text-4xl font-bold">LogIn Now</h1>
@@ -58,7 +69,7 @@ toast.error('something is wrong')
       <label className="label">
         <span className="label-text">Email</span>
       </label>
-      <input type="email" name="email" placeholder="email" className="input input-bordered" required />
+      <input type="email" name="email" ref={emailRef} placeholder="email" className="input input-bordered" required />
     </div>
     <div className="form-control">
       <label className="label">
@@ -66,7 +77,7 @@ toast.error('something is wrong')
       </label>
       <input type="password" name="password" placeholder="password" className="input input-bordered" required />
       <label className="label">
-        <a href="#" className="label-text-alt link link-hover">Forgot password?</a>
+        <a href="#" onClick={handleforgotPass} className="label-text-alt cursor-pointer link link-hover">Forgot password?</a>
       </label>
     </div>
     <div className="form-control mt-6">

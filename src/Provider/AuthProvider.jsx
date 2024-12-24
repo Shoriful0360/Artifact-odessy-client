@@ -1,5 +1,5 @@
 /* eslint-disable no-undef */
-import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
+import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../Firebase/firebase.init";
 
@@ -43,6 +43,12 @@ const updateUserProfile=(name,photoUrl)=>{
         displayName:name,photoURL:photoUrl
     })
 }
+
+// forget  password
+const forgetPassword=(email)=>{
+    setLoading(true)
+return sendPasswordResetEmail(auth,email)
+}
     useEffect(()=>{
         const unSubscribe=onAuthStateChanged(auth,async (currentUser)=>{
            setUser(currentUser)
@@ -54,7 +60,7 @@ const updateUserProfile=(name,photoUrl)=>{
     },[])
 
     const info={
-        createUser,user,setUser,logOut,loginUser,googleLogin,updateUserProfile,loading
+        createUser,forgetPassword,user,setUser,logOut,loginUser,googleLogin,updateUserProfile,loading
     }
     return (
         <div>
