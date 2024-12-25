@@ -1,26 +1,31 @@
-import { useQueries, useQuery } from "@tanstack/react-query";
+import {  useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { useEffect, useState } from "react";
 import toast from "react-hot-toast";
-import { BiSolidDislike, BiSolidLike } from "react-icons/bi";
+import { BiSolidLike } from "react-icons/bi";
 import { GrValidate } from "react-icons/gr";
 import { LuUserPen } from "react-icons/lu";
 import { MdTypeSpecimen } from "react-icons/md";
 import { TbLocationCheck, TbTournament } from "react-icons/tb";
-import { useLoaderData, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Spinner from "../component/Spinner";
 import UseAuth from "../hooks/UseAuth";
 
 
 const ArtDeatils = () => {
-  // const loadedData=useLoaderData()
+const [like,setLike]=useState({})
   const { id } = useParams()
   const {user}=UseAuth()
 
-  // const [artData,setArtData]=useState(loadedData)
-  const [like, setLike] = useState(false)
-  const [disLike,setDisLike]=useState(true)
 
+  // like realted data fetch
+  // const {isPending,data:likeData}=useQuery({
+  //   queryKey:['like'],
+  //   queryFn:async()=>{
+  //     const result=await axios.get(`http://localhost:5000/likeCount/${id}?email=${user?.email}`)
+  //     return result.data
+  //   }
+  // })
 
 
   const { data, refetch, isLoading } = useQuery({
@@ -38,34 +43,30 @@ const ArtDeatils = () => {
 
   useEffect(() => {
     refetch()
+    axios.get(`http://localhost:5000/likeCount/${id}?email=${user?.email}`)
+    .then(res=>{
+      setLike(res.data)
+    })
 
-  }, [like])
+  }, [like,user])
   if (isLoading) return <Spinner></Spinner>
-  const { _id, name, img, ArtType, count, context, created, dis, disBy, location, } = data || {}
-
-  // handle like count
-  const handleLikeCount = async (action) => {
-    const actionData={action:action,email:user?.email,art_id:id}
-
-      await axios.post(`http://localhost:5000/artLike`,actionData)
-
-  }
-
-
-  // fetch like data
-
+  // if(isPending) return <Spinner></Spinner>
+  const { name, img, ArtType, count, context, created, dis, disBy, location, } = data || {}
 
   // handle dislike
-  // const handleDisLikeCount = async (id) => {
-  //   try {
+  const handleLikeStatus = async () => {
+  
+    const actionData={email:user?.email,art_id:id,name,img,disBy}
+    const result=await axios.post('http://localhost:5000/likeCount',actionData)
 
-  //     await axios.patch(`http://localhost:5000/artifacts?id=${id}&dislike=${disLike}`)
+   
+    console.log(result)
+   
+
     
-  //   } catch {
-  //     toast.error('something is wrong')
-  //   }
+ 
 
-  // }
+  }
 
   return (
     <div className="sm:px-6 mt-5">
@@ -127,9 +128,13 @@ const ArtDeatils = () => {
           <p className="text-white mt-10">{context}</p>
         </div>
        <div className="flex gap-5 items-center">
-       <span className="text-gray-700 mt-6 text-4xl flex gap-2 items-center">{count} 
-         <BiSolidLike onClick={() => { setLike(!like), handleLikeCount('like') }} className={`hover:cursor-pointer ${like ? 'text-blue-400' : 'text-white'}  text-5xl`}></BiSolidLike>
-         {/* <BiSolidDislike onClick={() => { setDisLike(!disLike), handleDisLikeCount(_id) }} className={`hover:cursor-pointer ${disLike ? 'text-blue-400' : 'text-white'}  text-5xl`}></BiSolidDislike> */}
+     
+
+          <span className="text-gray-700 mt-6 text-4xl flex gap-2 items-center">
+       <BiSolidLike onClick={() => {  handleLikeStatus() }} className={`hover:cursor-pointer ${like?'text-blue-600':'text-white'}   text-5xl`}></BiSolidLike>
+      
+        {count} likes
+        
           </span>
        
   

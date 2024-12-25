@@ -58,7 +58,7 @@ const Navbar = () => {
                 </Link>
               </li>
               <li>
-                <Link>Liked Artifacts</Link>
+                <Link to={'/myLike'}>Liked Artifacts</Link>
               </li>
              
              

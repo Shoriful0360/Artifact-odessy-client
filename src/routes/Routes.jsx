@@ -10,6 +10,7 @@ import AllArtifacts from "../Pages/AllArtifacts";
 import MyArtifacts from "../Pages/MyArtifacts";
 import Error from "../Pages/Error";
 import UpdateArt from "../Pages/UpdateArt";
+import MyLikdArt from "../Pages/MyLikdArt";
 
 
 
@@ -37,7 +38,7 @@ export const router=createBrowserRouter([
             {
                 path:'/details/:id',
                 element:<AuthPrivate><ArtDeatils></ArtDeatils></AuthPrivate>,
-                // loader:({params})=>fetch(`http://localhost:5000/artifacts/${params.id}`)
+                
             },
             {
                 path:'/allArts',
@@ -46,6 +47,10 @@ export const router=createBrowserRouter([
             {
                 path:'/myArtifacts',
                 element:<MyArtifacts></MyArtifacts>
+            },
+            {
+                path:'/myLike',
+                element:<MyLikdArt></MyLikdArt>
             },
             {
                 path:'/update/:id',
