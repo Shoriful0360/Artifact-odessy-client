@@ -25,7 +25,7 @@ const {user}=UseAuth()
         const adderName=form.adderName.value;
     
      const formData={name,img,count:0,ArtType,context,created,dis,disBy,location,adderName,adderEmail:user?.email}
-     console.log(formData)
+
 
 
  

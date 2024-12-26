@@ -57,7 +57,7 @@ return sendPasswordResetEmail(auth,email)
            if(currentUser?.email){
         axios.post('https://historical-artifacts-tracker-server-seven.vercel.app/jwt',{email:currentUser?.email},{withCredentials:true})
         .then(res=>{
-            console.log('login',res.data)
+           
             setLoading(false)
         })
       
@@ -65,7 +65,7 @@ return sendPasswordResetEmail(auth,email)
            }else{
           axios.post('https://historical-artifacts-tracker-server-seven.vercel.app/logout',{},{withCredentials:true})
           .then(res=>{
-            console.log('logout',res.data)
+            
             setLoading(false)
           })
         //    console.log('logout', data)

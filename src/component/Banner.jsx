@@ -39,10 +39,10 @@ const Banner = () => {
             <Slide image={Img1} text="historical artifacts"></Slide>
         </SwiperSlide>
         <SwiperSlide>
-            <Slide image={Img2} text="historical artifacts"></Slide>
+            <Slide image={Img2} text="pharaoh history and archology HTML5 Template"></Slide>
         </SwiperSlide>
         <SwiperSlide>
-            <Slide image={Img3} text="historical artifacts"></Slide>
+            <Slide image={'https://thumbs.dreamstime.com/z/intricate-ancient-artifact-circular-design-ornate-gold-details-displayed-329629617.jpg'} text="Intricate ancient artifact"></Slide>
         </SwiperSlide>
  
         

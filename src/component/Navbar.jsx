@@ -7,7 +7,7 @@ const Navbar = () => {
   const{user,logOut}=UseAuth()
 
     return (
-        <div className='navbar bg-[#302E2F] mt-5 shadow-sm container  mx-auto'>
+        <div className='navbar fixed z-50 max-w-[1550px]   bg-[#302E2F]/50 backdrop-blur-lg mt-5 shadow-sm container  mx-auto'>
       <div className='flex-1'>
         <Link to='/' className='flex gap-2 items-center'>
           <img className='w-auto h-7' src={"logo"} alt='' />

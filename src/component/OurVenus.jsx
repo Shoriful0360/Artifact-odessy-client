@@ -33,11 +33,11 @@ const image=[
          
        
          </h1>
-          <div className="grid  lg:grid-cols-4 lg:gap-5 gap-3 md:grid-cols-2">
+          <div  className="grid  lg:grid-cols-4 lg:gap-5 gap-3 md:grid-cols-2">
            
            {
             image?.map((img,idx)=><div key={idx}>
-        <div className="relative hover:scale-105 transition-all" >
+        <div  data-aos="zoom-in"  className="relative hover:scale-105 transition-all" >
     
                <img className="w-full opacity-70 rounded-md" src={img.img} alt="" />
             

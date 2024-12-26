@@ -10,7 +10,7 @@ import { TbLocationCheck, TbTournament } from "react-icons/tb";
 import { useParams } from "react-router-dom";
 import Spinner from "../component/Spinner";
 import UseAuth from "../hooks/UseAuth";
-import { HiHandThumbUp, HiOutlineHandThumbUp } from "react-icons/hi2";
+import { HiHandThumbUp } from "react-icons/hi2";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
 
@@ -32,38 +32,34 @@ const [like,setLike]=useState({})
       catch {
         toast.error('something is wrong')
       }
-    }
+    },
+    enabled:!!user?.email
   })
 
   useEffect(() => {
-    refetch()
+  
     axiousSecure.get(`/likeCount/${id}?email=${user?.email}`)
     .then(res=>{
       setLike(res.data)
     })
-
+  
   }, [like,user])
   if (isLoading) return <Spinner></Spinner>
 
   const { name, img, ArtType, count, context, created, dis, disBy, location, } = data || {}
 
-  // handle dislike
+  // handle like status
   const handleLikeStatus = async () => {
   
     const actionData={email:user?.email,art_id:id,name,img,disBy}
-    const result=await axios.post('https://historical-artifacts-tracker-server-seven.vercel.app/likeCount',actionData)
-
-   
-    console.log(result)
-   
-
+    const result=await axiousSecure.post('/likeCount',actionData)
     
- 
-
+    refetch()
+   
   }
 
   return (
-    <div className="sm:px-6 mt-5">
+    <div  className="sm:px-6 mt-5">
       <div className="bg-deatailsImg bg-cover bg-center border-red-600 border-2 flex justify-center items-center h-[340px] bg-no-repeat px-6">
         <h1 className="text-3xl font-bold text-white">Independent Japanese Antiquity</h1>
       </div>

@@ -8,7 +8,7 @@ import Spinner from "../component/Spinner";
 const AuthPrivate = ({children}) => {
     const {user,loading}=UseAuth()
     const location=useLocation()
-    console.log(location)
+    
 
     if(loading){
         return <Spinner></Spinner>

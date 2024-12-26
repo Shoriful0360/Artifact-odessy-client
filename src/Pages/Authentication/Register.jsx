@@ -20,7 +20,7 @@ const Register = () => {
         const photoUrl=form.photoUrl.value;
         const password=form.password.value;
         const checkbox=e.target.terms.checked;
-     console.log(name,email,password,photoUrl)
+    //  console.log(name,email,password,photoUrl)
      const strongPassword=/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,}$/; 
      if (password.length < 6) {
         toast.error('password atleast 6 character')
@@ -41,8 +41,8 @@ const Register = () => {
       toast.success('Signup is successfuylly')
       form.reset()
       navigate('/')
-      }catch (err){
-        console.log(err)
+      }catch {
+        // console.log(err)
       }
     
     

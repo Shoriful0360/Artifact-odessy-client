@@ -4,7 +4,7 @@ import Card from "./Card";
 
 const ArtifactCard = ({artifacts}) => {
     return (
-        <div className="mt-6">
+        <div  className="mt-6">
        <div className="flex justify-center">
        <div className="divider w-20  divider-warning "></div> 
        </div>

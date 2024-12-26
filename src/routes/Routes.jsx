@@ -46,16 +46,16 @@ export const router=createBrowserRouter([
             },
             {
                 path:'/myArtifacts',
-                element:<MyArtifacts></MyArtifacts>
+                element:<AuthPrivate><MyArtifacts></MyArtifacts></AuthPrivate>
             },
             {
                 path:'/myLike',
-                element:<MyLikdArt></MyLikdArt>
+                element:<AuthPrivate><MyLikdArt></MyLikdArt></AuthPrivate>
             },
             {
                 path:'/update/:id',
                 element: <UpdateArt></UpdateArt>,
-                loader:({params})=>fetch(`https://historical-artifacts-tracker-server-seven.vercel.app/artifacts/${params.id}`)
+                loader:({params})=>fetch(`https://historical-artifacts-tracker-server-seven.vercel.app/update/${params.id}`)
             }
         ]
     },

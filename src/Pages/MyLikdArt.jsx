@@ -23,7 +23,7 @@ const {isPending,refetch,data:likeArt}=useQuery({
 // },[refetch])
 
 if(isPending) return <Spinner></Spinner>
-console.log(likeArt)
+
     return (
         <div>
 
