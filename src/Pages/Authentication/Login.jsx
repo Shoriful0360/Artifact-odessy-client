@@ -1,6 +1,6 @@
 import Lottie from 'lottie-react';
 import login_animate from '../../assets/Lottile_animation/login/Animation - 1733908240352.json'
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { FcGoogle } from 'react-icons/fc';
 import UseAuth from '../../hooks/UseAuth';
 import toast from 'react-hot-toast';
@@ -10,6 +10,8 @@ const Login = () => {
   const {loginUser,setUser,googleLogin,forgetPassword}=UseAuth()
   const navigate=useNavigate()
   const emailRef=useRef()
+  const location=useLocation()
+ 
 
   // login form
     const handleFormSubmit=async(e)=>{
@@ -23,7 +25,7 @@ const {user}=await  loginUser(email,password)
 setUser(user)
 toast.success('login successfull')
 form.reset()
-navigate('/')
+navigate(location?.state?location?.state :'/')
 }catch{
 
 toast.error('Invalid email or password')
@@ -36,7 +38,7 @@ try{
  const {user}=await googleLogin()
  setUser(user)
  toast.success('login is successfully')
- navigate('/')
+ navigate(location?.state?location?.state :'/')
 }
 catch{
 toast.error('something is wrong')
@@ -85,7 +87,7 @@ forgetPassword(email)
     </div>
   </form>
 
-  <div className='my-2'>
+  <div className='my-2 text-center'>
     <h1>Don't have an accoutn? <Link to={'/register'}><span className='text-blue-400 text-xl font-semibold'>Register</span></Link></h1>
   </div>
   <div className="divider">Log in with Google</div>

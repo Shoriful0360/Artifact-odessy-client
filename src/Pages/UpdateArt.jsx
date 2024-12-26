@@ -34,7 +34,7 @@ const formData={name,img,ArtType,context,created,dis,disBy,location,adderName,ad
 
 
 try{
-await axios.put(`http://localhost:5000/artifacts/${_id}`,formData)
+await axios.put(`https://historical-artifacts-tracker-server-seven.vercel.app/artifacts/${_id}`,formData)
 
 toast.success('update  successfully')
 navigate('/')

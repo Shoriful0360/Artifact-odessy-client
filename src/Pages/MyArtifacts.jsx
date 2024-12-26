@@ -9,15 +9,16 @@ import toast from "react-hot-toast";
 import Nodata from "../component/Nodata";
 import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 
 const MyArtifacts = () => {
 const {user}=UseAuth()
-console.log(user)
-const {isLoading,data:artifact,error,refetch}=useQuery({
+const axiousSecure=useAxiosSecure()
+const {isLoading,data:artifact,refetch}=useQuery({
     queryKey:['MyArtifact'],
     queryFn:async()=>{
-      const result=await axios.get(`http://localhost:5000/allArtifact?email=${user?.email}`)
+      const result=await axios.get(`http://localhost:5000/allArtifact/${user?.email}`,{withCredentials:true})
       return result.data
     
        
@@ -47,7 +48,7 @@ try{
         text: "Your file has been deleted.",
         icon: "success"
       });
-      await axios.delete(`http://localhost:5000/artifacts/${id}`)
+      await axios.delete(`https://historical-artifacts-tracker-server-seven.vercel.app/artifacts/${id}`)
       refetch()
     }
 

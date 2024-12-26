@@ -1,12 +1,14 @@
 
-import { Navigate } from "react-router-dom";
+import { Navigate, useLocation } from "react-router-dom";
 
 import UseAuth from "../hooks/UseAuth";
 import Spinner from "../component/Spinner";
 
 
 const AuthPrivate = ({children}) => {
-    const {user,loading,setLoading}=UseAuth()
+    const {user,loading}=UseAuth()
+    const location=useLocation()
+    console.log(location)
 
     if(loading){
         return <Spinner></Spinner>
@@ -17,7 +19,7 @@ const AuthPrivate = ({children}) => {
     }
     return (
         <div>
-      <Navigate to={'/login'}></Navigate>
+      <Navigate to={'/login'} state={location.pathname}></Navigate>
         </div>
     );
 };

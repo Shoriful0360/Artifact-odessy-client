@@ -18,21 +18,12 @@ const [like,setLike]=useState({})
   const {user}=UseAuth()
 
 
-  // like realted data fetch
-  // const {isPending,data:likeData}=useQuery({
-  //   queryKey:['like'],
-  //   queryFn:async()=>{
-  //     const result=await axios.get(`http://localhost:5000/likeCount/${id}?email=${user?.email}`)
-  //     return result.data
-  //   }
-  // })
-
 
   const { data, refetch, isLoading } = useQuery({
     queryKey: ['data'],
     queryFn: async () => {
       try {
-        const result = await axios.get(`http://localhost:5000/artifacts/${id}`)
+        const result = await axios.get(`https://historical-artifacts-tracker-server-seven.vercel.app/artifacts/${id}`)
         return result.data
       }
       catch {
@@ -43,21 +34,21 @@ const [like,setLike]=useState({})
 
   useEffect(() => {
     refetch()
-    axios.get(`http://localhost:5000/likeCount/${id}?email=${user?.email}`)
+    axios.get(`https://historical-artifacts-tracker-server-seven.vercel.app/likeCount/${id}?email=${user?.email}`)
     .then(res=>{
       setLike(res.data)
     })
 
   }, [like,user])
   if (isLoading) return <Spinner></Spinner>
-  // if(isPending) return <Spinner></Spinner>
+
   const { name, img, ArtType, count, context, created, dis, disBy, location, } = data || {}
 
   // handle dislike
   const handleLikeStatus = async () => {
   
     const actionData={email:user?.email,art_id:id,name,img,disBy}
-    const result=await axios.post('http://localhost:5000/likeCount',actionData)
+    const result=await axios.post('https://historical-artifacts-tracker-server-seven.vercel.app/likeCount',actionData)
 
    
     console.log(result)

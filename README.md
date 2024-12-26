@@ -1,8 +1,32 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-Currently, two official plugins are available:
+1. Project Name: Artifact Odyssey
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+2. Feature: 
+   * Artifact Database:
+      A searchable and filterable catalog of artifacts.
+      Details like name, origin, age, material, dimensions, and current location.
+     
+   * High-Resolution Images:
+     Zoomable images to view intricate details of artifacts.
+     360-degree views for a more immersive experience.
+
+   * Artifact Timeline:
+     Chronological representation of artifacts based on their historical periods.
+     Link to major events or cultural significance.
+
+    * Artifact Profiles:
+      Detailed descriptions, historical significance, and cultural context.
+
+    * User Accounts:
+     Allow users to save favorite artifacts or contribute additional information.
+     Personal collections or wishlists
+
+ 3. Tools:
+    * React
+    * firebase 
+    * typewriter
+    * axios
+    * Tanstack Query
+
+ 4. Live Link: https://artifact-odyssey.web.app/       

@@ -55,7 +55,7 @@ export const router=createBrowserRouter([
             {
                 path:'/update/:id',
                 element: <UpdateArt></UpdateArt>,
-                loader:({params})=>fetch(`http://localhost:5000/artifacts/${params.id}`)
+                loader:({params})=>fetch(`https://historical-artifacts-tracker-server-seven.vercel.app/artifacts/${params.id}`)
             }
         ]
     },

@@ -16,7 +16,7 @@ const [artifacts,setArtifacts]=useState([])
 
     const fetchData=async()=>{
         try{
-const {data}=await axios.get('http://localhost:5000/artifacts')
+const {data}=await axios.get('https://historical-artifacts-tracker-server-seven.vercel.app/artifacts',)
 setArtifacts(data)
         }catch{
             toast.error('something is wrong')

@@ -2,6 +2,7 @@
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { createContext, useEffect, useState } from "react";
 import { auth } from "../Firebase/firebase.init";
+import axios from "axios";
 
 export const AuthContext=createContext('')
 
@@ -51,8 +52,26 @@ return sendPasswordResetEmail(auth,email)
 }
     useEffect(()=>{
         const unSubscribe=onAuthStateChanged(auth,async (currentUser)=>{
-           setUser(currentUser)
-           setLoading(false)
+            setUser(currentUser)
+         
+           if(currentUser?.email){
+        axios.post('https://historical-artifacts-tracker-server-seven.vercel.app/jwt',{email:currentUser?.email},{withCredentials:true})
+        .then(res=>{
+            console.log('login',res.data)
+            setLoading(false)
+        })
+      
+         
+           }else{
+          axios.post('https://historical-artifacts-tracker-server-seven.vercel.app/logout',{},{withCredentials:true})
+          .then(res=>{
+            console.log('logout',res.data)
+            setLoading(false)
+          })
+           console.log('logout', data)
+        
+           }
+          
         })
         return()=>{
             unSubscribe()

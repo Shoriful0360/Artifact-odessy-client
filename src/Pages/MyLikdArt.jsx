@@ -5,19 +5,21 @@ import Spinner from "../component/Spinner";
 import { useEffect } from "react";
 import Error from "./Error";
 import Nodata from "../component/Nodata";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 const MyLikdArt = () => {
     const {user}=UseAuth()
+    const axiousSecure=useAxiosSecure()
 const {isPending,refetch,data:likeArt}=useQuery({
     queryKey:['like'],
     queryFn:async()=>{
-       const result= await axios.get( `http://localhost:5000/likeCount?email=${user?.email}`)
+       const result= await axiousSecure.get( `/likeCount?email=${user?.email}`)
        return result.data
     }
 })
 useEffect(()=>{
 refetch()
-},[user])
+},[refetch])
 
 if(isPending) return <Spinner></Spinner>
 console.log(likeArt)
@@ -25,7 +27,7 @@ console.log(likeArt)
         <div>
 
           {
-            likeArt.length?  <div className="overflow-x-auto">
+            likeArt?.length?  <div className="overflow-x-auto">
             <table className="table">
               {/* head */}
               <thead>
