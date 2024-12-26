@@ -15,11 +15,12 @@ const {isPending,refetch,data:likeArt}=useQuery({
     queryFn:async()=>{
        const result= await axiousSecure.get( `/likeCount?email=${user?.email}`)
        return result.data
-    }
+    },
+    enabled:!!user?.email
 })
-useEffect(()=>{
-refetch()
-},[refetch])
+// useEffect(()=>{
+// refetch()
+// },[refetch])
 
 if(isPending) return <Spinner></Spinner>
 console.log(likeArt)

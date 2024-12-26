@@ -10,12 +10,15 @@ import { TbLocationCheck, TbTournament } from "react-icons/tb";
 import { useParams } from "react-router-dom";
 import Spinner from "../component/Spinner";
 import UseAuth from "../hooks/UseAuth";
+import { HiHandThumbUp, HiOutlineHandThumbUp } from "react-icons/hi2";
+import useAxiosSecure from "../hooks/useAxiosSecure";
 
 
 const ArtDeatils = () => {
 const [like,setLike]=useState({})
   const { id } = useParams()
   const {user}=UseAuth()
+  const axiousSecure=useAxiosSecure()
 
 
 
@@ -23,7 +26,7 @@ const [like,setLike]=useState({})
     queryKey: ['data'],
     queryFn: async () => {
       try {
-        const result = await axios.get(`https://historical-artifacts-tracker-server-seven.vercel.app/artifacts/${id}`)
+        const result = await axiousSecure.get(`/artifacts/${id}?email=${user?.email}`)
         return result.data
       }
       catch {
@@ -34,7 +37,7 @@ const [like,setLike]=useState({})
 
   useEffect(() => {
     refetch()
-    axios.get(`https://historical-artifacts-tracker-server-seven.vercel.app/likeCount/${id}?email=${user?.email}`)
+    axiousSecure.get(`/likeCount/${id}?email=${user?.email}`)
     .then(res=>{
       setLike(res.data)
     })
@@ -122,7 +125,8 @@ const [like,setLike]=useState({})
      
 
           <span className="text-gray-700 mt-6 text-4xl flex gap-2 items-center">
-       <BiSolidLike onClick={() => {  handleLikeStatus() }} className={`hover:cursor-pointer ${like?'text-blue-600':'text-white'}   text-5xl`}></BiSolidLike>
+       {/* <BiSolidLike ></BiSolidLike> */}
+       <HiHandThumbUp onClick={() => {  handleLikeStatus() }} className={`hover:cursor-pointer ${like?'bg-blue-600 p-1 text-white w-9 h-10 rounded-full':'text-white'}   text-5xl`} />
       
         {count} likes
         

@@ -6,6 +6,7 @@ import axios from "axios";
 import Card from "../component/Card";
 import ArtifactCard from "../component/ArtifactCard";
 import Spinner from "../component/Spinner";
+import CountTrap from "../component/CountTrap";
 
 
 const Home = () => {
@@ -28,6 +29,7 @@ setArtifacts(data)
         <div>
            <Banner></Banner> 
            <OurVenus></OurVenus>
+           <CountTrap></CountTrap>
            <ArtifactCard artifacts={artifacts}></ArtifactCard>
    
 

@@ -13,7 +13,7 @@ const AllArtifacts = () => {
   const { isPending, error, data: artifacts, refetch } = useQuery({
     queryKey: ['artifacts'],
     queryFn: async () => {
-      const result = await axios.get(`http://localhost:5000/art?search=${search}`)
+      const result = await axios.get(`https://historical-artifacts-tracker-server-seven.vercel.app/art?search=${search}`)
       return result.data
     }
 

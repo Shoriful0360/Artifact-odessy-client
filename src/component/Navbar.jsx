@@ -7,15 +7,15 @@ const Navbar = () => {
   const{user,logOut}=UseAuth()
 
     return (
-        <div className='navbar bg-base-100 shadow-sm container  mx-auto'>
+        <div className='navbar bg-[#302E2F] mt-5 shadow-sm container  mx-auto'>
       <div className='flex-1'>
         <Link to='/' className='flex gap-2 items-center'>
           <img className='w-auto h-7' src={"logo"} alt='' />
-          <span className='font-bold'>Artifact Odyssey</span>
+          <span className='font-bold italic'><span className="text-2xl text-red-600 ">Art</span>ifact Odyssey</span>
         </Link>
       </div>
       <div className='flex-none'>
-        <ul className='menu menu-horizontal px-1'>
+        <ul className='menu menu-horizontal *:text-white px-1'>
           <li>
             <Link to='/'>Home</Link>
           </li>

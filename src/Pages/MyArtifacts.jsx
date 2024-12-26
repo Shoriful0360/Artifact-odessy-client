@@ -18,16 +18,19 @@ const axiousSecure=useAxiosSecure()
 const {isLoading,data:artifact,refetch}=useQuery({
     queryKey:['MyArtifact'],
     queryFn:async()=>{
-      const result=await axios.get(`http://localhost:5000/allArtifact/${user?.email}`,{withCredentials:true})
+      const result=await axiousSecure.get(`/allArtifact/${user?.email}`)
       return result.data
     
        
-    }
+    },
+    enabled:!!user?.email
+
+
 })
 
-useEffect(()=>{
-  refetch()
-},[user?.email])
+// useEffect(()=>{
+//   refetch()
+// },[user?.email])
 
 if(isLoading) return <Spinner></Spinner>  
 

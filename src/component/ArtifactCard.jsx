@@ -1,3 +1,4 @@
+import { Typewriter } from "react-simple-typewriter";
 import Card from "./Card";
 
 
@@ -9,7 +10,21 @@ const ArtifactCard = ({artifacts}) => {
        </div>
           <div className="text-center">
           <p>collection</p>
-          <h1 className="text-xl font-semibold">Discover The Collection</h1>
+          <h1 className="text-xl font-semibold">
+            <span className="text-yellow">
+                     <Typewriter
+                     words={['Discover The Collection']}
+                     loop={Infinity}
+                     cursor
+                     cursorStyle='_'
+                     typeSpeed={70}
+                     deleteSpeed={50}
+                     delaySpeed={1000}
+                     >
+            
+                     </Typewriter>
+                     </span>
+          </h1>
           </div>
         <div className="grid mt-5 lg:grid-cols-3 md:grid-cols-2 gap-7">
         {

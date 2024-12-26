@@ -68,7 +68,7 @@ return sendPasswordResetEmail(auth,email)
             console.log('logout',res.data)
             setLoading(false)
           })
-           console.log('logout', data)
+        //    console.log('logout', data)
         
            }
           

@@ -1,7 +1,6 @@
 
 import toast from "react-hot-toast";
 import UseAuth from "../hooks/UseAuth";
-import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import useAxiosSecure from "../hooks/useAxiosSecure";
 
@@ -31,7 +30,7 @@ const {user}=UseAuth()
 
  
      try{
- await axiousSecure.post('/artifacts',formData)
+ await axiousSecure.post(`/artifacts?email=${user?.email}`,formData)
 
     toast.success('added successfully')
 navigate('/')

@@ -1,3 +1,4 @@
+import { Typewriter } from "react-simple-typewriter";
 
 
 const OurVenus = () => {
@@ -16,7 +17,22 @@ const image=[
 
     return (
       <div className="">
-         <h1 className="text-center font-bold text-3xl my-5">About Our <span className="text-yellow">VENUS</span></h1>
+         <h1 className="text-center font-bold text-3xl my-5">About Our {''} <span className="text-yellow">
+         <Typewriter
+         words={['VENUS']}
+         loop={Infinity}
+         cursor
+         cursorStyle='_'
+         typeSpeed={70}
+         deleteSpeed={50}
+         delaySpeed={1000}
+         >
+
+         </Typewriter>
+         </span>
+         
+       
+         </h1>
           <div className="grid  lg:grid-cols-4 lg:gap-5 gap-3 md:grid-cols-2">
            
            {
