@@ -17,8 +17,7 @@ const Card = ({artifact}) => {
         <div className="flex items-center justify-between mt-4">
 
           <div className="flex items-center gap-3">
-            <p>{count}</p>
-          <HiHandThumbUp className={`hover:cursor-pointer w-10 h-10 rounded-full bg-blue-500 text-white p-1 text-5xl`} />
+            <p className="text-xl font-serif font-medium">{count} like</p>
           </div>
         
        <Link to={`/details/${_id}`}>

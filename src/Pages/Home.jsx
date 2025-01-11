@@ -8,6 +8,7 @@ import ArtifactCard from "../component/ArtifactCard";
 import Spinner from "../component/Spinner";
 import CountTrap from "../component/CountTrap";
 import { Link } from "react-router-dom";
+import WritersWanted from "../component/WritersWanted";
 
 
 const Home = () => {
@@ -36,6 +37,8 @@ setArtifacts(data)
            <div className="flex justify-center">
          <Link to={'/allArts'}>  <button className="my-4 custom-btn btn-2">See all </button></Link>
            </div>
+
+           <WritersWanted></WritersWanted>
    
 
  

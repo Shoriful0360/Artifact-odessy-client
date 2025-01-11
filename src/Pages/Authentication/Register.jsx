@@ -36,7 +36,8 @@ const Register = () => {
       }  
       try{
         const result=await createUser(email,password)
-       await updateUserProfile(name,email)
+
+       await updateUserProfile(name,photoUrl)
       setUser({...result?.user, displayName:name,photoURL:photoUrl})
       toast.success('Signup is successfuylly')
       form.reset()

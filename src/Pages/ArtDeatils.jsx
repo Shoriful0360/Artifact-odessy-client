@@ -53,7 +53,8 @@ const [like,setLike]=useState({})
   
     const actionData={email:user?.email,art_id:id,name,img,disBy}
     const result=await axiousSecure.post('/likeCount',actionData)
-    
+    console.log(result)
+    setLike({email:user?.email})
     refetch()
    
   }
@@ -122,7 +123,7 @@ const [like,setLike]=useState({})
 
           <span className="text-gray-700 mt-6 text-4xl flex gap-2 items-center">
        {/* <BiSolidLike ></BiSolidLike> */}
-       <HiHandThumbUp onClick={() => {  handleLikeStatus() }} className={`hover:cursor-pointer ${like?'bg-blue-600 p-1 text-white w-9 h-10 rounded-full':'text-white'}   text-5xl`} />
+       <HiHandThumbUp onClick={() => {  handleLikeStatus() }} className={`hover:cursor-pointer ${like?.email?'bg-blue-600 p-1 text-white w-9 h-10 rounded-full':'text-white'}   text-5xl`} />
       
         {count} likes
         
