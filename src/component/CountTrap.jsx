@@ -7,7 +7,7 @@ import { SiHomeadvisor } from "react-icons/si";
 const CountTrap = () => {
 
     return (
-      <div className="bg-[#302E2F] ">
+      <div className="bg-[#302E2F] mx-10   ">
           <div className="sm:flex md:flex-wrap py-10 justify-around my-10 lg:w-10/12 mx-auto ">
             <div className="">
                 <div className="text-5xl my-4 text-[#936A5A]">

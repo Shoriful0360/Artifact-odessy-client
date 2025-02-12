@@ -41,7 +41,7 @@ toast.error('something is wrong')
 
     }
     return (
-        <div className=' sm:w-10/12 mx-auto w-full '>
+        <div className=' sm:w-10/12 py-10 mx-auto  '>
         <div className="">
             <div className="hero-content flex-col  lg:flex-row-reverse">
 

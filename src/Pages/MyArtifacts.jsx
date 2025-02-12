@@ -68,13 +68,13 @@ toast.error('somethins is wrong')
 
 
     return (
-        <div>
+        <div className="py-10 mx-10">
 
             {artifact?.length? <div className="overflow-x-auto">
   <table className="table">
     {/* head */}
     <thead>
-      <tr>
+      <tr className="text-lg">
         <th>
          
         </th>

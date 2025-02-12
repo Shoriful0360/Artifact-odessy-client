@@ -16,7 +16,7 @@ const image=[
 ]
 
     return (
-      <div className="">
+      <div className="mx-10">
          <h1 className="text-center font-bold text-3xl my-5">About Our {''} <span className="text-yellow">
          <Typewriter
          words={['VENUS']}
@@ -36,8 +36,8 @@ const image=[
           <div  className="grid  lg:grid-cols-4 lg:gap-5 gap-3 md:grid-cols-2">
            
            {
-            image?.map((img,idx)=><div key={idx}>
-        <div  data-aos="zoom-in"  className="relative hover:scale-105 transition-all" >
+            image?.map((img,idx)=><div  key={idx}>
+        <div  data-aos="zoom-in"  className="relative rounded-lg bg-black  hover:scale-105 transition-all" >
     
                <img className="w-full opacity-70 rounded-md" src={img.img} alt="" />
             

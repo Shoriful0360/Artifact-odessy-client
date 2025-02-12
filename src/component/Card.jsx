@@ -14,15 +14,15 @@ const Card = ({artifact}) => {
       <div className="p-4">
         <h2 className="text-xl font-semibold text-gray-800">{name}</h2>
         <p className="text-gray-600 mt-2 text-sm">{context.substring(0,70)}...</p>
-        <div className="flex items-center justify-between mt-4">
+        <div className="flex items-center  justify-between mt-4">
 
           <div className="flex items-center gap-3">
-            <p className="text-xl font-serif font-medium">{count} like</p>
+            <p className="text-xl font-serif font-medium">{count} Like</p>
           </div>
         
        <Link to={`/details/${_id}`}>
        <button
-            className=" custom-btn btn-1 "
+            className=" custom-btn btn-1  "
             
           >
             View Details

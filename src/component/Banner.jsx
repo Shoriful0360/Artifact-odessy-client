@@ -19,7 +19,7 @@ import Slide from './Slide';
 const Banner = () => {
  
     return (
-        <div className='container  py-10 mx-auto'>
+        <div className='py-8'>
             <Swiper
         spaceBetween={30}
         centeredSlides={true}

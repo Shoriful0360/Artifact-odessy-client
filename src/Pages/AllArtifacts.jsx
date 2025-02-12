@@ -28,7 +28,7 @@ const AllArtifacts = () => {
 
 
   return (
-    <div>
+    <div className="mx-10 py-10">
       <div className="my-5 flex justify-center">
         <label className="input input-bordered max-w-72  flex items-center gap-2">
           <input onChange={(e) => setSearch(e.target.value)} type="text" className="grow" placeholder="Search" />

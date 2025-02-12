@@ -2,8 +2,8 @@
 
 const WritersWanted = () => {
     return (
-        <div className='mt-16'>
-          <div className="md:flex">
+        <div className='mt-16 mx-10'>
+          <div className="lg:flex space-y-8">
 
   <div className="flex-1 md:pr-24 font-serif  mx-auto mt-7">
     <p className='text-xl font-serif italic'>Enjoy the freedom to set your own hours

@@ -5,12 +5,12 @@ import Footer from "../component/Footer";
 
 const Main = () => {
     return (
-        <div className="max-w-[1550px] px-2 mx-auto">
+        <div className="">
           <header>
             <Navbar></Navbar>
           </header>
          
-<div className="min-h-[calc(100vh-306px)] px-4 pt-20 " >
+<div className="min-h-[calc(100vh-230px)] mx-auto px-1 pt-12 " >
 <Outlet></Outlet>
 </div>
   

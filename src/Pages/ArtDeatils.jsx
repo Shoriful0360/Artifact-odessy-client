@@ -60,8 +60,8 @@ const [like,setLike]=useState({})
   }
 
   return (
-    <div  className="sm:px-6 mt-5">
-      <div className="bg-deatailsImg bg-cover bg-center border-red-600 border-2 flex justify-center items-center h-[340px] bg-no-repeat px-6">
+    <div  className=" py-10 mt-5">
+      <div className="bg-deatailsImg bg-cover bg-center  border-2 flex justify-center items-center h-[340px] bg-no-repeat px-6">
         <h1 className="text-3xl font-bold text-white">Independent Japanese Antiquity</h1>
       </div>
 

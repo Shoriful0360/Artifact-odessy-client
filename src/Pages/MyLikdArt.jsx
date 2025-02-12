@@ -25,7 +25,7 @@ const {isPending,refetch,data:likeArt}=useQuery({
 if(isPending) return <Spinner></Spinner>
 
     return (
-        <div>
+        <div className="mx-10 py-10">
 
           {
             likeArt?.length?  <div className="overflow-x-auto">
